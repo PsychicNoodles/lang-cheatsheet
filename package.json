@@ -1,10 +1,10 @@
 {
-  "name": "material-ui-example-webpack",
-  "version": "0.15.0",
-  "description": "Sample project that uses Material-UI",
+  "name": "lang-cheatsheet",
+  "version": "0.1",
+  "description": "A few useful cheatsheets/tools for various languages, focusing on Korean and Japanese.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/callemall/material-ui.git"
+    "url": "https://github.com/psychicnoodles/lang-cheatsheet.git"
   },
   "scripts": {
     "start": "webpack-dev-server --config webpack-dev-server.config.js --progress --inline --colors",
