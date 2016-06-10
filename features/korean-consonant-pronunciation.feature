@@ -3,12 +3,14 @@ Feature: Korean Consonant Pronunciation
   Background:
     Given the user has navigated to the "힌국어 Consonants" page
 
-  Scenario Outline: Resyllabification
-    
-    Enters sample syllables with each Korean consonant followed by
-    syllables with each vowel and tests the output for correct resyllabification.
+  Scenario: Resyllabification
+    Given the user has enabled "Resyllabification"
+    When the user enters "책을"
+    Then a "resyl" explanation for each syllable should appear
+    And the first syllable should be "채" with "Gives ㄱ" detail
+    And the second syllable should be "글" with "Recieves ㄱ" detail
 
-    Given the user enters <cons> as the first syllable
-    And the user enters <vowel> as the second syllable
-    When we are finished processing
-    Then the pronunciation result should be <result>
+  Scenario: Resyllabification (none needed)
+    Given the user has enabled "Resyllabification"
+    When the user enters "안녕"
+    Then a "resyl" explanation should *not* appear
