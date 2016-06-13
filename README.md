@@ -1,6 +1,6 @@
 # lang-cheatsheet
 
-A simple SPA with a few useful cheatsheets/tools for various languages, focusing on Korean and Japanese. Application code uses [Material UI](http://material-ui.com). Test code uses [Cucumber](http://cucumber.io) in Ruby, because I like Ruby better than Node. Server is located at http://localhost:3000.
+A simple SPA with a few useful cheatsheets/tools for various languages, focusing on Korean and Japanese, built as a first foray into TDD. Application code uses [Material UI](http://material-ui.com). Test code uses [Cucumber](http://cucumber.io) in Ruby, because I like Ruby better than Node. Server is located at http://localhost:3000.
 
 The output code is purely HTML/CSS/Javascript, so you can throw it somewhere like GitHub pages and have it served without any real backend.
 
