@@ -1,7 +1,11 @@
 import React, {Component} from 'react'
 
-class ComponentRules extends Component {
-
+class ConsonantRules extends Component {
+  render() {
+    return (
+      <div>Hello world!</div>
+    )
+  }
 }
 
-export default ComponentRules
+export default ConsonantRules
