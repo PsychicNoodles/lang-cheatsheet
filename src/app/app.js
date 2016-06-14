@@ -5,7 +5,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 import Router from 'react-router/lib/Router'
 import Route from 'react-router/lib/Route'
 import Link from 'react-router/lib/Link'
-import browserHistory from 'react-router/lib/browserHistory'
+import hashHistory from 'react-router/lib/hashHistory'
 
 import Main from './main'
 import ConsonantRules from './components/consonant-rules'
