@@ -15,14 +15,14 @@ Feature: Korean Consonant Pronunciation
     Given the user has enabled "Resyllabification"
     When the user enters "한글은"
     Then "resyl" explanations should appear
-    And the second syllable should be "그" with "Gives ㄹ" brief and "글 ends with a consonant and is followed by a syllable starting with a vowel, so it gives its final consonant ㄹ" detail
+    And the second syllable should be "그" with "Gives ㄹ" brief and "글 ends with a consonant and is followed by a syllable starting with a vowel, so its final consonant ㄹ is given to the next syllable" detail
     And the third syllable should be "른" with "Receives ㄹ" brief and "은 starts with a vowel and is preceded by a syllable ending with a consonant, so it receives the final consonant ㄹ" detail
 
   Scenario: Resyllabification (double consonant ending)
     Given the user has enabled "Resyllabification"
     When the user enters "읽어요"
     Then "resyl" explanations should appear
-    And the first syllable should be "일" with "Gives ㄱ" brief and "읽 ends with a double consonant and is followed by a syllable starting with a vowel, so from its double consonant ending, ㄺ, it gives the second consonant ㄱ" detail
+    And the first syllable should be "일" with "Gives ㄱ" brief and "읽 ends with a double consonant and is followed by a syllable starting with a vowel, so from its double consonant ending, ㄺ, the second consonant ㄱ is given to the next syllable" detail
     And the second syllable should be "거" with "Receives ㄱ" brief and "어 starts with a vowel and is preceded by a syllable ending with a double consonant, so from the double consonant ending, ㄺ, it receives the second consonant ㄱ" detail
 
   Scenario: Resyllabification (none)
@@ -110,7 +110,7 @@ Feature: Korean Consonant Pronunciation
     Given the user has enabled "Tensification"
     When the user enters "씻고있어요"
     Then a "tensify" explanation should appear
-    And the second syllable should be "꼬" with "ㄱ becomes ㄲ" brief and "고 starts with a plosive consonant and is preceded by a syllable ending with the fricative consonant ㅅ, so the ㄱ is tensified to ㄲ" detail
+    And the second syllable should be "꼬" with "ㄱ becomes ㄲ" brief and "고 starts with a plosive consonant and is preceded by a syllable ending with the fricative consonant ㅅ, so its initial consonant ㄱ is tensified to ㄲ" detail
 
   Scenario: Tensification (none)
     Given the user has enabled "Tensification"
@@ -121,21 +121,21 @@ Feature: Korean Consonant Pronunciation
     Given the user has enabled "ㅎ Aspiration"
     When the user enters "좋다"
     Then "aspire" explanations should appear
-    And the first syllable should be "조" with "Gives ㅎ" brief and "좋 ends with ㅎ and is followed by a syllable starting with the plain plosive consonant ㄷ, so it merges the ㅎ into the next syllable" detail
-    And the second syllable should be "타" with "ㄷ becomes ㅌ" brief and "다 begins with the plain plosive consonant ㄷ and is preceded by a syllable ending with ㅎ, so the ㄷ is pronounced as the aspirate consonant ㅌ" detail
+    And the first syllable should be "조" with "Gives ㅎ" brief and "좋 ends with ㅎ and is followed by a syllable starting with a plain plosive consonant, so its final consonant ㅎ is merged into the next syllable" detail
+    And the second syllable should be "타" with "ㄷ becomes ㅌ" brief and "다 begins with a plain plosive consonant and is preceded by a syllable ending with ㅎ, so its initial consonant ㄷ is pronounced as the aspirate consonant ㅌ" detail
 
   Scenario: ㅎ Aspiration (ㅎ preceded by consonant)
     Given the user has enabled "ㅎ Aspiration"
-    When the user enters "닫히다"
+    When the user enters "입학"
     Then "aspire" explanations should appear
-    And the first syllable should be "다" with "Gives ㄷ" brief and "닫 ends with the plain plosive consonant ㄷ and is followed by a syllable starting with ㅎ, so it merges the ㄷ into the next syllable" detail
-    And the second syllable should be "치" with "ㅎ becomes ㅊ" brief and "히 begins with ㅎ and is preceded by a syllable ending with the plain plosive consonant ㄷ, so the ㅎ is pronounced as the aspirate consonant ㅊ" detail
+    And the first syllable should be "이" with "Gives ㅂ" brief and "입 ends with a plain plosive consonant and is followed by a syllable starting with ㅎ, so it merges the ㄷ into the next syllable" detail
+    And the second syllable should be "팍" with "ㅎ becomes ㅍ" brief and "학 begins with ㅎ and is preceded by a syllable ending with a plain plosive consonant, so its initial consonant ㅎ is pronounced as the aspirate consonant ㅍ" detail
 
   Scenario: ㅎ Aspiration (ㅎ between voiced sounds)
     Given the user has enabled "ㅎ Aspiration"
     When the user enters "좋아요"
     Then an "aspire" explanation should appear
-    And the first syllable should be "조" with "ㅎ becomes silent" brief and "The ㅎ is between the two voiced sounds ㅗ and ㅣ, so it becomes silent" detail
+    And the first syllable should be "조" with "ㅎ becomes silent" brief and "The ㅎ is between the two voiced sounds, so it becomes silent" detail
 
   Scenario: ㅎ Aspiration (none)
     Given the user has enabled "ㅎ Aspiration"
@@ -146,7 +146,7 @@ Feature: Korean Consonant Pronunciation
     Given the user has enabled "Double Consonant Reduction"
     When the user enters "값"
     Then a "dubcons" explanation should appear
-    And the first syllable should be "갑" with "ㅅ becomes silent" detail
+    And the first syllable should be "갑" with "ㅅ becomes silent" brief and "값 is the end of a word and ends with a double consonant, so the second final consonant ㅅ becomes silent"
 
   Scenario: Double Consonant Reduction (none)
     Given the user has enabled "Double Consonant Reduction"
