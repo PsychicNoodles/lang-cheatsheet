@@ -42,7 +42,7 @@ class Main extends Component {
                         primaryTogglesNestedList={true}
                         nestedItems={[
                           <ListItem primaryText="Consonant Pronunciation Rules"
-                                    value="consonant-rules"/>
+                                    value="korean/consonant-rules"/>
                         ]}/>
               <ListItem primaryText="日本語" secondaryText="Japanese"
                         primaryTogglesNestedList={true}
@@ -51,6 +51,7 @@ class Main extends Component {
                         ]}/>
             </SelectableList>
           </Drawer>
+          {this.props.children}
         </div>
       </MuiThemeProvider>
     )
