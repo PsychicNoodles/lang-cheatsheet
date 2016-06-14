@@ -40,14 +40,16 @@ class Main extends Component {
             <SelectableList onChange={this.onListChange.bind(this)}>
               <ListItem primaryText="한국어" secondaryText="Korean"
                         primaryTogglesNestedList={true}
+                        value="" // this needs to be set for some reason or else it turns grey
                         nestedItems={[
                           <ListItem primaryText="Consonant Pronunciation Rules"
                                     value="korean/consonant-rules"/>
                         ]}/>
               <ListItem primaryText="日本語" secondaryText="Japanese"
                         primaryTogglesNestedList={true}
+                        value=""
                         nestedItems={[
-                          <ListItem primaryText="Coming Soon™"/>
+                          <ListItem primaryText="Coming Soon™" value="/"/>
                         ]}/>
             </SelectableList>
           </Drawer>
