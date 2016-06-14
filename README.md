@@ -28,7 +28,7 @@ bundle exec cucumber # run cucumber tests
 
 * Korean consonant types, in table form (ie. plosive vs fricative, plosive-plain vs plosive-aspirate)
 * Korean consonant and vowel pronunciation, in table form
-* Korean consonant pronunciation, in IME input form
+* Korean consonant pronunciation rules, in IME input form
 * Korean syllable-blocks, in IME input form
 * Korean conjugation, in IME input form
 * Japanese consonant and vowel pronunciation
