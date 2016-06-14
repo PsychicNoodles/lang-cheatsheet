@@ -16,13 +16,20 @@ const SelectableList = MakeSelectable(List)
 class Main extends Component {
   constructor(props) {
     super(props);
-    this.state = {open: false}
+    this.state = {open: false, rightIconCls: null, rightIconTap: null}
   }
 
   onListChange(evt, value) {
     this.props.router.push(value)
     this.setState({
       open: false
+    })
+  }
+
+  setRightIcon(cls, fn) {
+    this.setState({
+      rightIconCls: cls,
+      rightIconTap: fn
     })
   }
 
@@ -33,6 +40,8 @@ class Main extends Component {
           <AppBar
             title="Language Cheatsheets"
             onLeftIconButtonTouchTap={() => this.setState({open: true})}
+            iconClassNameRight={this.state.rightIconCls}
+            onRightIconButtonTouchTap={this.state.rightIconTap}
           />
           <Drawer docked={false} open={this.state.open}
                   onRequestChange={(open) => this.setState({open})}>
