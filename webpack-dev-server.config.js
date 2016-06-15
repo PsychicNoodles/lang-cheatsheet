@@ -25,6 +25,11 @@ const config = {
     path: buildPath, // Path of output file
     filename: 'app.js',
   },
+  externals: {
+    'react/addons': true,
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': true
+  },
   plugins: [
     // Enables Hot Modules Replacement
     new webpack.HotModuleReplacementPlugin(),
