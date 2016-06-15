@@ -118,11 +118,11 @@ Feature: Korean Consonant Pronunciation
     Then a "dubcons" explanation should appear
     And the first syllable should be "갑" with "ㅅ becomes silent" brief and "값 is the end of a word and ends with a double consonant, so the second final consonant ㅅ becomes silent"
 
-  Palatalization, by virtue of it requiring a consonant ending
-  followed by a vowel, will only trigger if Resyllabification is
-  also enabled. One of its conditions, triggering whether or not a
-  ㅎ modifies the ㄷ, means ㅎ Aspiration will also need to enabled
-  in the corresponding test.
+  # Palatalization, by virtue of it requiring a consonant ending
+  # followed by a vowel, will only trigger if Resyllabification is
+  # also enabled. One of its conditions, triggering whether or not a
+  # ㅎ modifies the ㄷ, means ㅎ Aspiration will also need to enabled
+  # in the corresponding test.
 
   Scenario: Palatalization (followed by 이)
     Given the user has enabled "Palatalization"
