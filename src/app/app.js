@@ -4,11 +4,13 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 
 import Router from 'react-router/lib/Router'
 import Route from 'react-router/lib/Route'
+import IndexRoute from 'react-router/lib/IndexRoute'
 import Link from 'react-router/lib/Link'
 import hashHistory from 'react-router/lib/hashHistory'
 
 import Main from './main'
-import ConsonantRules from './components/consonant-rules'
+import Home from './components/home'
+import KoreanConsonantRules from './components/korean/consonant-rules'
 import NoMatch from './components/no-match'
 
 // Needed for onTouchTap
@@ -20,8 +22,9 @@ injectTapEventPlugin();
 render((
   <Router history={hashHistory}>
     <Route path='/' component={Main}>
+      <IndexRoute component={Home}/>
       <Route path='korean'>
-        <Route path='consonant-rules' component={ConsonantRules}/>
+        <Route path='consonant-rules' component={KoreanConsonantRules}/>
       </Route>
       <Route path="*" component={NoMatch}/>
     </Route>
