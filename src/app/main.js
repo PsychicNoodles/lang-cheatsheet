@@ -16,7 +16,7 @@ const SelectableList = MakeSelectable(List)
 class Main extends Component {
   constructor(props) {
     super(props);
-    this.state = {open: false, rightIconCls: null, rightIconTap: null}
+    this.state = {open: false, rightIconEle: null, rightIconTap: null}
   }
 
   onListChange(evt, value) {
@@ -28,7 +28,7 @@ class Main extends Component {
 
   setRightIcon(cls, fn) {
     this.setState({
-      rightIconCls: cls,
+      rightIconEle: cls,
       rightIconTap: fn
     })
   }
@@ -38,21 +38,22 @@ class Main extends Component {
       <MuiThemeProvider muiTheme={getMuiTheme()}>
         <div>
           <AppBar
-            title="Language Cheatsheets"
+            title="Lang Cheatsheets" id="appbar"
             onLeftIconButtonTouchTap={() => this.setState({open: true})}
-            iconClassNameRight={this.state.rightIconCls}
-            onRightIconButtonTouchTap={this.state.rightIconTap}
-          />
-          <Drawer docked={false} open={this.state.open}
+            iconElementRight={this.state.rightIconEle}
+            onRightIconButtonTouchTap={this.state.rightIconTap}/>
+          <Drawer docked={false} open={this.state.open} id="appdrawer"
                   onRequestChange={(open) => this.setState({open})}>
-            <ListItem primaryText="Home" onTouchTap={(evt) => this.onListChange(evt, '/')}/>
+            <ListItem primaryText="Home" id="home"
+                      onTouchTap={(evt) => this.onListChange(evt, '/')}/>
             <SelectableList onChange={this.onListChange.bind(this)}>
               <ListItem primaryText="한국어" secondaryText="Korean"
                         primaryTogglesNestedList={true}
                         value="" // this needs to be set for some reason or else it turns grey
                         nestedItems={[
                           <ListItem primaryText="Consonant Pronunciation Rules"
-                                    value="korean/consonant-rules"/>
+                                    value="korean/consonant-rules"
+                                    id="korean-consonant-rules"/>
                         ]}/>
               <ListItem primaryText="日本語" secondaryText="Japanese"
                         primaryTogglesNestedList={true}
@@ -62,7 +63,10 @@ class Main extends Component {
                         ]}/>
             </SelectableList>
           </Drawer>
-          {this.props.children}
+          <div id="content">
+          {React.cloneElement(this.props.children,
+            {setBarRightIcon: this.setRightIcon.bind(this)})}
+          </div>
         </div>
       </MuiThemeProvider>
     )
