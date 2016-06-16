@@ -8,6 +8,8 @@ import IndexRoute from 'react-router/lib/IndexRoute'
 import Link from 'react-router/lib/Link'
 import hashHistory from 'react-router/lib/hashHistory'
 
+import {withRouter} from 'react-router'
+
 import Main from './main'
 import Home from './components/home'
 import KoreanConsonantRules from './components/korean/consonant-rules'
@@ -21,7 +23,7 @@ injectTapEventPlugin();
 // For more details see: https://facebook.github.io/react/docs/top-level-api.html#react.render
 render((
   <Router history={hashHistory}>
-    <Route path='/' component={Main}>
+    <Route path='/' component={withRouter(Main)}>
       <IndexRoute component={Home}/>
       <Route path='korean'>
         <Route path='consonant-rules' component={KoreanConsonantRules}/>

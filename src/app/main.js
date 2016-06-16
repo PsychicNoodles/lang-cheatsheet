@@ -3,7 +3,6 @@
  * which incorporates components providedby material-ui.
  */
 import React, {Component, PropTypes} from 'react'
-import {withRouter} from 'react-router'
 import AppBar from 'material-ui/AppBar'
 import Drawer from 'material-ui/Drawer'
 import {List, ListItem, MakeSelectable} from 'material-ui/List'
@@ -73,4 +72,4 @@ class Main extends Component {
   }
 }
 
-export default withRouter(Main)
+export default Main
