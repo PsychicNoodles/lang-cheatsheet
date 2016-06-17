@@ -5,6 +5,8 @@ import Toggle from 'material-ui/Toggle'
 import IconButton from 'material-ui/IconButton'
 import ActionList from 'material-ui/svg-icons/action/list'
 
+import {hasConsonantEnding} from '../../utils'
+
 class KoreanConsonantRules extends Component {
   constructor(props) {
     super(props)
@@ -62,3 +64,18 @@ class KoreanConsonantRules extends Component {
 }
 
 export default KoreanConsonantRules
+
+export function process(input) {
+  let output = input.map((i) => {
+    return {result: i, brief: null, detail: null}
+  })
+  let endedWithCons = false
+  for(let [ind, chr] of input.entries()) {
+    if(endedWithCons) {
+      let last = output[ind - 1]
+      last.result = dropConsonantEnding(last.result)
+      last.brief = `Gives ${}`
+    }
+    if(hasConsonantEnding(chr)) {}
+  }
+}
