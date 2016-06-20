@@ -5,7 +5,7 @@ import Toggle from 'material-ui/Toggle'
 import IconButton from 'material-ui/IconButton'
 import ActionList from 'material-ui/svg-icons/action/list'
 
-import {hasConsonantEnding} from '../../utils'
+import {hasConsonantFinal, getConsonantFinal} from '../../utils'
 
 class KoreanConsonantRules extends Component {
   constructor(props) {
@@ -72,10 +72,18 @@ export function process(input) {
   let endedWithCons = false
   for(let [ind, chr] of input.entries()) {
     if(endedWithCons) {
+      let ending = getConsonantFinal(last)
       let last = output[ind - 1]
-      last.result = dropConsonantEnding(last.result)
-      last.brief = `Gives ${}`
+      let lastSyl = last.result
+      let current = output[ind]
+      let currentSyl = current.result
+      last.result = dropConsonantFinal(last.result)
+      last.brief = `Gives ${ending}`
+      last.detail = `${lastSyl} ends with a consonant and is followed by a ` +
+                    `syllable starting with a vowel, so its final consonant ` +
+                    `${ending} is given to the next syllable`
+      current.result =
     }
-    if(hasConsonantEnding(chr)) {}
+    if(hasConsonantFinal(chr)) {}
   }
 }
