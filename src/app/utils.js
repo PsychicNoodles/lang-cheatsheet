@@ -7,7 +7,7 @@ const SYL_END = 0xD7A3
 
 // consonant offsets are compounding, so each must be decremented further
 // from their corresponding invalid double consonant Final
-const CONS_NOT_FINALS = [0x3138, 0x3142, 0x3147]
+const CONS_NOT_FINALS = [0x3138, 0x3143, 0x3149]
 const CONS_NOT_INITIALS = [0x3133, 0x3135, 0x3136, 0x313A, 0x313B, 0x313C,
                            0x313D, 0x313E, 0x313F, 0x3140, 0x3144]
 
@@ -23,10 +23,8 @@ export function getConsonantFinal(syl) {
   if(hasConsonantFinal(syl)) {
     let diff = (syl.charCodeAt(0) - SYL_START) % 28 - 1
     let cons = diff + CONS_START
-    let sub = 0
     for(let unfinal of CONS_NOT_FINALS)
-      if(unfinal <= cons) sub++
-    cons += sub
+      if(unfinal <= cons) cons++
     return String.fromCharCode(cons)
   }
   else return null
@@ -39,8 +37,12 @@ export function dropConsonantFinal(syl) {
 
 export function getConsonantInitial(syl) {
   let diff = Math.floor((syl.charCodeAt(0) - SYL_START) / 588)
+  let cons = diff + CONS_START
+  for(let uninitial of CONS_NOT_INITIALS)
+    if(uninitial <= cons) cons++
+  return String.fromCharCode(cons)
 }
 
-export function replaceFirstJamo(syl, repl) {
+export function replaceConsonantInitial(syl, repl) {
 
 }
