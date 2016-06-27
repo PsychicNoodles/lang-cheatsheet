@@ -163,10 +163,29 @@ Feature: Korean Consonant Pronunciation
     # The Palatalization should trigger first
     When the user enters "닫햐"
     Then "palatize" explanations should appear
-    And "aspire" explanations should appear
+    And a "aspire" explanation should appear
     And the first syllable's "palatize" explanation should be "닺" with "ㄷ becomes ㅈ" brief and "닫 ends with ㄷ and is followed by a syllable starting with (ㅎ)y-semivowel, so its final consonant ㄷ is pronounced as ㅈ" detail
     And the first syllable's "aspire" explanation should be "다" with "Gives ㅈ" brief and "닺 ends with a consonant and is followed by a syllable starting with a vowel, so its final consonant ㅈ is given to the next syllable" detail
     And the second syllable's "aspire" explanation should be "챠" with "ㅎ becomes ㅊ" brief and "햐 starts with ㅎ and is preceded by a syllable ending with a plain plosive consonant, so its initial consonant ㅎ is pronounced as the aspirate consonant ㅊ" detail
+
+  # As described in http://www.koreanwikiproject.com/wiki/Consonant_assimilation
+  # rule 8 and in more detail in explanation 2
+  # This example requires Nasal Assimilation
+  Scenario: Intrusive ㄴ (y-semivowel)
+    Given the user has enabled "Intrusive ㄴ"
+    When the user enters "색 연필" # note the space separating the two words
+    Then a "intrudin" explanation should appear
+    And a "nasalass" explanation should appear
+    And the first syllable's "nasalass" explanation should be "생" with "ㄱ becomes ㅇ" brief and "색 ends with a consonant and is the end of a word, so its final consonant ㄱ is pronounced as the nasal consonant ㅇ" detail
+    And the second syllable's "intrudin" explanation should be "년" with "ㅇ becomes ㄴ" brief and "연 starts with a y-semivowel and is after a word boundary, so its initial ㅇ is pronounced as ㄴ"
+
+  Scenario: Intrusive ㄴ (이)
+    Given the user has enabled "Intrusive ㄴ"
+    When the user enters "색 인필" # note the space separating the two words
+    Then a "intrudin" explanation should appear
+    And a "nasalass" explanation should appear
+    And the first syllable's "nasalass" explanation should be "생" with "ㄱ becomes ㅇ" brief and "색 ends with a consonant and is the end of a word, so its final consonant ㄱ is pronounced as the nasal consonant ㅇ" detail
+    And the second syllable's "intrudin" explanation should be "닌" with "ㅣ becomes ㄴ" brief and "인 starts with a 이 and is after a word boundary, so its initial ㅇ is pronounced as ㄴ"
 
   Scenario Outline: Non-triggering Input
     Given the user has enabled <rule>
@@ -183,3 +202,4 @@ Feature: Korean Consonant Pronunciation
       | ㅎ Aspiration              | aspire    |
       | Double Consonant Reduction | dubcons   |
       | Palatalization             | palatize  |
+      | Intrusive ㄴ               | intrudin  |
